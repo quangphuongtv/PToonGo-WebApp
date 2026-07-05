@@ -119,6 +119,26 @@ async function startServer() {
         console.log("Successfully seeded default admin user into Firestore.");
       }
 
+      // Ensure ptoongo@gmail.com is seeded with admin role and admin@123 password
+      let ptoongoExists = false;
+      usersSnap.forEach((docSnap) => {
+        if (docSnap.data().email?.toLowerCase() === "ptoongo@gmail.com") {
+          ptoongoExists = true;
+        }
+      });
+      if (!ptoongoExists) {
+        console.log("Seeding ptoongo@gmail.com admin user...");
+        await setDoc(doc(db, "users", "admin-ptoongo-user"), {
+          id: "admin-ptoongo-user",
+          email: "ptoongo@gmail.com",
+          name: "PToonGo Admin",
+          role: "admin",
+          password: "admin@123",
+          createdAt: Date.now()
+        });
+        console.log("Successfully seeded ptoongo@gmail.com admin user.");
+      }
+
       // 2. Seed Default Videos
       const videosCol = collection(db, "videos");
       const videosSnap = await getDocs(videosCol);
@@ -309,7 +329,7 @@ async function startServer() {
         id,
         email: email.trim(),
         name: name.trim(),
-        role: normalizedEmail === "pdigitalmotion@gmail.com" ? "admin" : (role || "user"),
+        role: (normalizedEmail === "pdigitalmotion@gmail.com" || normalizedEmail === "ptoongo@gmail.com") ? "admin" : (role || "user"),
         password: password,
         createdAt: Date.now()
       };
