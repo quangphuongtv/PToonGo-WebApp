@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "videos": {
+      "fields": {
+        "id": "string",
+        "title": "string",
+        "summary": "string",
+        "category": "string",
+        "videoUrl": "string",
+        "thumbnailUrl": "string",
+        "views": "number",
+        "createdAt": "number",
+        "duration": "string"
+      }
+    },
+    "users": {
+      "fields": {
+        "id": "string",
+        "email": "string",
+        "name": "string",
+        "role": "string",
+        "password": "string",
+        "createdAt": "number"
+      }
+    },
+    "chats": {
+      "fields": {
+        "id": "string",
+        "userId": "string",
+        "userName": "string",
+        "message": "string",
+        "createdAt": "number"
+      }
+    },
+    "contacts": {
+      "fields": {
+        "id": "string",
+        "name": "string",
+        "email": "string",
+        "message": "string",
+        "createdAt": "number"
+      }
+    }
+  },
+  "firestore": {
+    "videos": {
+      "path": "videos"
+    },
+    "users": {
+      "path": "users"
+    },
+    "chats": {
+      "path": "chats"
+    },
+    "contacts": {
+      "path": "contacts"
+    }
+  }
+}

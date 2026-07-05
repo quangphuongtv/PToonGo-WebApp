@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Custom brand colors for cool tone requirements */
+  --color-brand-blue: #244895;
+  --color-brand-green: #549846;
+  --color-brand-orange: #E9672E;
+  --color-brand-bg: #112037;
+  --color-brand-secondary: #08142E;
+}
+
+html, body {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08142E;
+}
+::-webkit-scrollbar-thumb {
+  background: #244895;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #549846;
+}
+
+/* Dynamic flow/glow effect for hover states */
+.glow-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glow-hover:hover {
+  box-shadow: 0 0 15px rgba(84, 152, 70, 0.4);
+  border-color: #549846;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.glow-hover-orange {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glow-hover-orange:hover {
+  box-shadow: 0 0 15px rgba(233, 103, 46, 0.4);
+  border-color: #E9672E;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.glow-hover-blue {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glow-hover-blue:hover {
+  box-shadow: 0 0 15px rgba(36, 72, 149, 0.5);
+  border-color: #244895;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Scale effect when active/selected (1.01) */
+.active-scale {
+  transition: transform 0.15s ease-out;
+}
+.active-scale:active, .active-scale.selected {
+  transform: scale(1.01);
+}
+
+/* Glassmorphism mirror effect for sticky header */
+.glass-header {
+  background-color: rgba(17, 32, 55, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glassmorphism mirror effect for footer */
+.glass-footer {
+  background-color: rgba(8, 20, 46, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Frosted Glass Theme Classes */
+.frosted-card {
+  background: rgba(8, 20, 46, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.frosted-card:hover {
+  background: rgba(36, 72, 149, 0.45);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
+}
+
+.frosted-card-premium {
+  background: rgba(8, 20, 46, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+}
+
+.glow-orange-btn {
+  background-color: #E9672E;
+  box-shadow: 0 0 15px rgba(233, 103, 46, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-orange-btn:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 20px #E9672E;
+}
+
+.glow-green-btn {
+  background-color: #549846;
+  box-shadow: 0 0 15px rgba(84, 152, 70, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-green-btn:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 20px #549846;
+}
+
