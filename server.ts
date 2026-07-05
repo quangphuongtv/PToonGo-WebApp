@@ -120,24 +120,40 @@ async function startServer() {
       }
 
       // Ensure ptoongo@gmail.com is seeded with admin role and admin@123 password
-      let ptoongoExists = false;
+      let ptoongoDocId = "admin-ptoongo-user";
       usersSnap.forEach((docSnap) => {
         if (docSnap.data().email?.toLowerCase() === "ptoongo@gmail.com") {
-          ptoongoExists = true;
+          ptoongoDocId = docSnap.id;
         }
       });
-      if (!ptoongoExists) {
-        console.log("Seeding ptoongo@gmail.com admin user...");
-        await setDoc(doc(db, "users", "admin-ptoongo-user"), {
-          id: "admin-ptoongo-user",
-          email: "ptoongo@gmail.com",
-          name: "PToonGo Admin",
-          role: "admin",
-          password: "admin@123",
-          createdAt: Date.now()
-        });
-        console.log("Successfully seeded ptoongo@gmail.com admin user.");
-      }
+      console.log("Ensuring ptoongo@gmail.com admin user with password admin@123 exists...");
+      await setDoc(doc(db, "users", ptoongoDocId), {
+        id: ptoongoDocId,
+        email: "ptoongo@gmail.com",
+        name: "PToonGo Admin",
+        role: "admin",
+        password: "admin@123",
+        createdAt: Date.now()
+      });
+      console.log("Successfully set ptoongo@gmail.com admin user.");
+
+      // Ensure pdigitalmotion@gmail.com is seeded with admin role and TVcomp2026 password
+      let pdigitalmotionDocId = "admin-pdigitalmotion-user";
+      usersSnap.forEach((docSnap) => {
+        if (docSnap.data().email?.toLowerCase() === "pdigitalmotion@gmail.com") {
+          pdigitalmotionDocId = docSnap.id;
+        }
+      });
+      console.log("Ensuring pdigitalmotion@gmail.com admin user with password TVcomp2026 exists...");
+      await setDoc(doc(db, "users", pdigitalmotionDocId), {
+        id: pdigitalmotionDocId,
+        email: "pdigitalmotion@gmail.com",
+        name: "PToonGo SuperAdmin",
+        role: "admin",
+        password: "TVcomp2026",
+        createdAt: Date.now()
+      });
+      console.log("Successfully set pdigitalmotion@gmail.com admin user.");
 
       // 2. Seed Default Videos
       const videosCol = collection(db, "videos");
