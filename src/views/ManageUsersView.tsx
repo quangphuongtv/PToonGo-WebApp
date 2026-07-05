@@ -13,7 +13,9 @@ import {
   Calendar,
   Contact,
   Database,
-  Download
+  Download,
+  Eye,
+  EyeOff
 } from "lucide-react";
 
 // Safe LocalStorage helpers to avoid QuotaExceededError
@@ -76,6 +78,7 @@ export default function ManageUsersView({
   const [isRegisterMode, setIsRegisterMode] = useState<boolean>(() => safeGetLocalStorage("ptoongo_is_register_mode") === "true");
   const [email, setEmail] = useState(() => safeGetLocalStorage("ptoongo_email") || "");
   const [password, setPassword] = useState(() => safeGetLocalStorage("ptoongo_password") || "");
+  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState(() => safeGetLocalStorage("ptoongo_name") || "");
   const [role, setRole] = useState<"admin" | "user">(() => (safeGetLocalStorage("ptoongo_role") as "admin" | "user") || "user");
   const [authError, setAuthError] = useState("");
@@ -370,13 +373,25 @@ export default function ManageUsersView({
                 <div className="relative">
                   <Lock className="absolute left-3 top-3.5 w-4 h-4 text-slate-500" />
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-4 py-3 bg-black/40 border border-white/10 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-[#549846] transition-colors"
+                    className="w-full pl-10 pr-12 py-3 bg-black/40 border border-white/10 rounded-xl text-slate-100 text-sm focus:outline-none focus:border-[#549846] transition-colors"
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-2.5 p-1 text-slate-500 hover:text-slate-300 focus:outline-none rounded-lg hover:bg-white/5 transition-colors"
+                    title={showPassword ? "Ẩn mật khẩu" : "Hiển thị mật khẩu"}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="w-5 h-5" />
+                    ) : (
+                      <Eye className="w-5 h-5" />
+                    )}
+                  </button>
                 </div>
               </div>
 
